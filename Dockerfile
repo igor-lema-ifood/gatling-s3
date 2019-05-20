@@ -24,6 +24,7 @@ RUN apk add --update wget bash libc6-compat && \
 # install awscli
 RUN apk -v --update add \
         python \
+        git \
         tree \
         py-pip \
         groff \
@@ -38,9 +39,6 @@ RUN apk -v --update add \
 WORKDIR  /opt/gatling
 
 COPY . .
-
-# set directories below to be mountable from host
-VOLUME ["/opt/gatling/conf", "/opt/gatling/user-files"]
 
 # set environment variables
 ENV PATH /opt/gatling/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/gatling
